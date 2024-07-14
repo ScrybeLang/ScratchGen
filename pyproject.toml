@@ -1,0 +1,28 @@
+# pyproject.toml
+
+[project]
+name = "ScratchGen"
+version = "1.0.0"
+description = "A Python interface to create Scratch projects"
+readme = "README.md"
+authors = [
+    {name = "Bradley Pierce", email = "bituvocoding@gmail.com"}
+]
+license = {file = "LICENSE"}
+classifiers = [
+    "License :: OSI Approved :: GNU General Public License v3 (GPLv3)",
+    "Operating System :: Microsoft :: Windows",
+    "Topic :: Software Development :: Libraries :: Python Modules",
+    "Intended Audience :: Developers",
+    "Intended Audience :: Education",
+    "Programming Language :: Python",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.12"
+]
+keywords = ["scratch", "blocks", "python"]
+dependencies = []
+requires-python = ">=3.9"
+
+[build-system]
+requires = ["setuptools"]
+build-backend = "setuptools.build_meta"
