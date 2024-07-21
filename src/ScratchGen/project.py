@@ -36,13 +36,19 @@ class Project:
         # Specify separators so output is minified (no whitespace)
         json_data = json.dumps(self._serialize(), separators=(',', ':'))
 
+        written_assets = []
         with zipfile.ZipFile(name, "w", zipfile.ZIP_DEFLATED, compresslevel=5) as file:
             # Add all assets to ZIP file
             for target in self._targets:
                 assets = target._assets["images"] + target._assets["sounds"]
 
                 for asset in assets:
-                    file.writestr(asset.md5ext, asset.data)
+                    filename = asset.md5ext
+                    if filename not in written_assets:
+                        # Prevent duplicate assets
+                        file.writestr(filename, asset.data)
+
+                    written_assets.append(filename)
 
             file.writestr("project.json", json_data)
 
