@@ -766,7 +766,7 @@ Possible values for `operation`:
  - `COSINE`
  - `TANGENT`
  - `ARCSINE`
- - `ARCCOSING`
+ - `ARCCOSINE`
  - `ARCTANGENT`
  - `NATURAL_LOGARITHM`
  - `LOGARITHM`
