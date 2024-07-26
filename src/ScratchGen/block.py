@@ -99,8 +99,9 @@ class Block:
 
         return dictionary
 
-# Not really useful but provides an internal name distinction
+# Name distinction
 Reporter = Block
+Boolean = Reporter
 
 # Class for blocks that can hold other ones
 # Crazy!

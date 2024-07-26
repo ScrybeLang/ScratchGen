@@ -1,5 +1,5 @@
 from ..opcodes import _get
-from ..block import Reporter
+from ..block import Reporter, Boolean
 from ..constants import *
 
 class Add(Reporter):
@@ -26,37 +26,37 @@ class Divide(Reporter):
         self._addInput(JSON_NUMBER, "NUM1", a)
         self._addInput(JSON_NUMBER, "NUM2", b)
 
-class LessThan(Reporter):
+class LessThan(Boolean):
     def __init__(self, a, b):
         super().__init__(_get(self))
         self._addInput(JSON_NUMBER, "OPERAND1", a)
         self._addInput(JSON_NUMBER, "OPERAND2", b)
 
-class Equals(Reporter):
+class Equals(Boolean):
     def __init__(self, a, b):
         super().__init__(_get(self))
         self._addInput(JSON_NUMBER, "OPERAND1", a)
         self._addInput(JSON_NUMBER, "OPERAND2", b)
 
-class GreaterThan(Reporter):
+class GreaterThan(Boolean):
     def __init__(self, a, b):
         super().__init__(_get(self))
         self._addInput(JSON_NUMBER, "OPERAND1", a)
         self._addInput(JSON_NUMBER, "OPERAND2", b)
 
-class And(Reporter):
+class And(Boolean):
     def __init__(self, a, b):
         super().__init__(_get(self))
         self._addInput(JSON_SPECIAL, "OPERAND1", a)
         self._addInput(JSON_SPECIAL, "OPERAND2", b)
 
-class Or(Reporter):
+class Or(Boolean):
     def __init__(self, a, b):
         super().__init__(_get(self))
         self._addInput(JSON_SPECIAL, "OPERAND1", a)
         self._addInput(JSON_SPECIAL, "OPERAND2", b)
 
-class Not(Reporter):
+class Not(Boolean):
     def __init__(self, condition):
         super().__init__(_get(self))
         self._addInput(JSON_SPECIAL, "OPERAND", condition)
@@ -84,7 +84,7 @@ class LengthOf(Reporter):
         super().__init__(_get(self))
         self._addInput(JSON_STRING, "STRING", string)
 
-class Contains(Reporter):
+class Contains(Boolean):
     def __init__(self, string, substring):
         super().__init__(_get(self))
         self._addInput(JSON_STRING, "STRING1", string)

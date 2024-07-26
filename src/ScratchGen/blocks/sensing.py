@@ -1,18 +1,18 @@
 from ..opcodes import _get
-from ..block import Block, Reporter
+from ..block import Block, Reporter, Boolean
 from ..constants import *
 
-class TouchingObject(Reporter):
+class TouchingObject(Boolean):
     def __init__(self, target):
         super().__init__(_get(self))
         self._addMenu("TOUCHINGOBJECTMENU", target)
 
-class TouchingColor(Reporter):
+class TouchingColor(Boolean):
     def __init__(self, hex_code):
         super().__init__(_get(self))
         self._addInput(JSON_COLOR, "COLOR", hex_code)
 
-class ColorTouchingColor(Reporter):
+class ColorTouchingColor(Boolean):
     def __init__(self, hex_code_1, hex_code_2):
         super().__init__(_get(self))
         self._addInput(JSON_COLOR, "COLOR", hex_code_1)
@@ -50,11 +50,11 @@ class SetDragMode(Block):
         super().__init__(_get(self))
         self._addField("DRAG_MODE", mode)
 
-class MouseDown(Reporter):
+class MouseDown(Boolean):
     def __init__(self):
         super().__init__(_get(self))
 
-class KeyPressed(Reporter):
+class KeyPressed(Boolean):
     def __init__(self, key):
         super().__init__(_get(self))
         self._addMenu("KEY_OPTION", key)
@@ -72,7 +72,7 @@ class Loudness(Reporter):
     def __init__(self):
         super().__init__(_get(self))
 
-class Loud(Reporter):
+class Loud(Boolean):
     def __init__(self):
         super().__init__(_get(self))
 

@@ -1,5 +1,5 @@
 from ..opcodes import _get
-from ..block import Block, Reporter
+from ..block import Block, Reporter, Boolean
 from ..constants import *
 
 class SetVariable(Block):
@@ -72,7 +72,7 @@ class ListLength(Reporter):
         super().__init__(_get(self))
         self._addField("LIST", list)
 
-class ListContains(Reporter):
+class ListContains(Boolean):
     def __init__(self, list, item):
         super().__init__(_get(self))
         self._addField("LIST", list)
