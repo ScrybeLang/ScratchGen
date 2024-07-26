@@ -15,8 +15,8 @@ BRIGHTNESS = "brightness"
 GHOST = "ghost"
 
 # Sound effects
-PITCH = "PITCH"
-PAN = "PAN"
+PITCH = "pitch"
+PAN = "pan"
 
 # Layers
 FRONT = "front"
