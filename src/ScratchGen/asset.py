@@ -17,10 +17,11 @@ def parsePath(*args):
 
     return name, file_path
 
+image_extensions = ("png", "jpg", "jpeg", "gif", "bmp", "webp")
+
 class Asset:
     def __init__(self, *args):
         self.name, self.file_path = parsePath(*args)
-
         self.format = os.path.splitext(self.file_path)[1][1:]
 
         with open(self.file_path, "rb") as handle:
@@ -34,9 +35,14 @@ class Asset:
         return [self.name, None]
 
     def _serialize(self):
-        return {
+        dictionary = {
             "name": self.name,
             "dataFormat": self.format,
             "assetId": self.md5,
             "md5ext": self.md5ext
         }
+
+        if self.format in image_extensions:
+            dictionary.update({"bitmapResolution": 1})
+
+        return dictionary
