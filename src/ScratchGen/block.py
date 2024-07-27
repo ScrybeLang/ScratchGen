@@ -120,15 +120,39 @@ def _Modulo(*args):
     from .blocks import Modulo
     return Modulo(*args)
 
-class _SupportsBinops():
+def _LessThan(*args):
+    from .blocks import LessThan
+    return LessThan(*args)
+
+def _GreaterThan(*args):
+    from .blocks import GreaterThan
+    return GreaterThan(*args)
+
+def _LessThanEquals(*args):
+    from .blocks import Not, GreaterThan
+    return Not(GreaterThan(*args))
+
+def _GreaterThanEquals(*args):
+    from .blocks import Not, LessThan
+    return Not(LessThan(*args))
+
+def _Equals(*args):
+    from .blocks import Equals
+    return Equals(*args)
+
+class _NumericalBinops:
     def __add__(self, value):     return _Add(self, value)
     def __sub__(self, value):     return _Subtract(self, value)
     def __mul__(self, value):     return _Multiply(self, value)
     def __truediv__(self, value): return _Divide(self, value)
     def __mod__(self, value):     return _Modulo(self, value)
+    def __lt__(self, value):      return _LessThan(self, value)
+    def __gt__(self, value):      return _GreaterThan(self, value)
+    def __le__(self, value):      return _LessThanEquals(self, value)
+    def __ge__(self, value):      return _GreaterThanEquals(self, value)
+    def __eq__(self, value):      return _Equals(self, value)
 
-class Reporter(Block, _SupportsBinops):
-    ...
+class Reporter(Block, _NumericalBinops): ...
 Boolean = Reporter
 
 # Class for blocks that can hold other ones

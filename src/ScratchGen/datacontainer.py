@@ -1,8 +1,8 @@
 from .ids import generateID
 from .constants import JSON_VARIABLE, JSON_LIST
-from .block import _SupportsBinops
+from .block import _NumericalBinops
 
-class DataContainer(_SupportsBinops):
+class DataContainer(_NumericalBinops):
     def __init__(self, name, value, type):
         self.id = generateID(type)
 

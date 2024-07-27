@@ -1018,7 +1018,7 @@ project.save("Flying Test.sb3")
 
 # Extra Notes
 
-You may use addition, subtraction, multiplication, (true) division, and modulus on any operator. For example:
+All reporters have support for their native Python binary operations. For example:
 
 ```python
 (my_variable + 1) * 2
