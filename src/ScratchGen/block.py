@@ -26,7 +26,7 @@ class Block:
         self.next = other_block.id
 
     def _addInput(self, type, key, input):
-        if isinstance(input, Reporter):
+        if isinstance(input, Block):
             if not hasattr(input, "id"):
                 # "Regenerate" custom block parameters
                 input = input._copy()
