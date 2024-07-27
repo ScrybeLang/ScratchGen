@@ -1015,3 +1015,17 @@ sprite.createScript(WhenFlagClicked(),
 
 project.save("Flying Test.sb3")
 ```
+
+# Extra Notes
+
+You may use addition, subtraction, multiplication, (true) division, and modulus on any operator. For example:
+
+```python
+(my_variable + 1) * 2
+```
+
+is equivalent to:
+
+```python
+Multiply(Add(my_variable, 1), 2)
+```

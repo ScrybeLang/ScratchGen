@@ -99,8 +99,36 @@ class Block:
 
         return dictionary
 
-# Name distinction
-Reporter = Block
+# Lazy imports to avoid circular imports
+def _Add(*args):
+    from .blocks import Add
+    return Add(*args)
+
+def _Subtract(*args):
+    from .blocks import Subtract
+    return Subtract(*args)
+
+def _Multiply(*args):
+    from .blocks import Multiply
+    return Multiply(*args)
+
+def _Divide(*args):
+    from .blocks import Divide
+    return Divide(*args)
+
+def _Modulo(*args):
+    from .blocks import Modulo
+    return Modulo(*args)
+
+class _SupportsBinops():
+    def __add__(self, value):     return _Add(self, value)
+    def __sub__(self, value):     return _Subtract(self, value)
+    def __mul__(self, value):     return _Multiply(self, value)
+    def __truediv__(self, value): return _Divide(self, value)
+    def __mod__(self, value):     return _Modulo(self, value)
+
+class Reporter(Block, _SupportsBinops):
+    ...
 Boolean = Reporter
 
 # Class for blocks that can hold other ones
