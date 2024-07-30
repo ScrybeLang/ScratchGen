@@ -43,7 +43,7 @@ class CustomBlock(Block):
             "argumentdefaults": JSONify(argumentdefaults)
         })
 
-        return self.parameters if len(self.parameters) > 1 else self.parameters[0]
+        return self.parameters if len(self.parameters) != 1 else self.parameters[0]
 
     def setScript(self, *args):
         for block in args:
