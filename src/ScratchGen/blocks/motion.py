@@ -57,9 +57,8 @@ class BounceOffEdge(Block):
 
 class SetRotationStyle(Block):
     def __init__(self, style):
-        super().__init__(_get(self), fields={
-            "STYLE": [style, None]
-        })
+        super().__init__(_get(self))
+        self.fields = {"STYLE": [style, None]}
 
 class ChangeX(Block):
     def __init__(self, change):

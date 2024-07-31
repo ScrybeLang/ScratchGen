@@ -58,13 +58,12 @@ class Block:
     def _addMenu(self, key, input):
         if isinstance(input, Reporter):
             self.contained_blocks.append(input)
-            input.parent = self.parent # not sure why this has to be here
+            input.parent = self.id
 
             value = [3, str(input.id)]
+        elif hasattr(input, "_asInputValue"):
+            value = input._asInputValue()
         else:
-            if not isinstance(input, str):
-                input = input.name
-
             menu = Block(menu_opcodes[self.opcode])
             menu._addField(key, input)
             menu.shadow = True
