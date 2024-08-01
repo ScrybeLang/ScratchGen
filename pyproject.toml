@@ -24,8 +24,8 @@ dependencies = []
 requires-python = ">=3.9"
 
 [project.urls]
-Homepage = "https://github.com/Bituvo/ScratchGen"
-Issues = "https://github.com/Bituvo/ScratchGen/issues"
+Homepage = "https://github.com/ScrybeLang/ScratchGen"
+Issues = "https://github.com/ScrybeLang/ScratchGen/issues"
 
 [build-system]
 requires = ["setuptools"]
