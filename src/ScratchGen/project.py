@@ -4,7 +4,7 @@ import json
 import zipfile
 
 class Project:
-    def __init__(self):
+    def __init__(self, agent="ScratchGen"):
         self.stage = Stage()
 
         self.addBackdrop = self.stage.addBackdrop
@@ -19,7 +19,7 @@ class Project:
         self.meta = {
             "semver": "3.0.0",
             "vm": "0.2.0",
-            "agent": "ScratchGen"
+            "agent": agent
         }
 
     def _serialize(self):

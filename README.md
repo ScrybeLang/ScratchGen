@@ -20,6 +20,8 @@ Initializing a new project takes only one line:
 project = Project()
 ```
 
+You may pass in an optional string user agent as an argument.
+
 ## Creating Sprites
 
 To add a sprite to your project, you must specify the sprite's name:
