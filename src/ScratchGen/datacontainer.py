@@ -11,10 +11,10 @@ class DataContainer(_NumericalBinops):
         self.type = JSON_VARIABLE if "v" in type else JSON_LIST
 
     def _asInputValue(self):
-        return [3, [self.type, self.name, str(self.id)]]
+        return [3, [self.type] + self._asFieldValue()]
 
     def _asFieldValue(self):
-        return [self.name, str(self.id)]
+        return [self.name, f"{self.id}-{self.name}"]
 
     def _serialize(self):
         return {
