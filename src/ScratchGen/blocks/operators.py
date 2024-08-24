@@ -4,25 +4,25 @@ from ..constants import *
 
 class Add(Reporter):
     def __init__(self, a, b):
-        super().__init__(_get(self))
+        super().__init__(_get(self), number=True)
         self._addInput(JSON_NUMBER, "NUM1", a)
         self._addInput(JSON_NUMBER, "NUM2", b)
 
 class Subtract(Reporter):
     def __init__(self, a, b):
-        super().__init__(_get(self))
+        super().__init__(_get(self), number=True)
         self._addInput(JSON_NUMBER, "NUM1", a)
         self._addInput(JSON_NUMBER, "NUM2", b)
 
 class Multiply(Reporter):
     def __init__(self, a, b):
-        super().__init__(_get(self))
+        super().__init__(_get(self), number=True)
         self._addInput(JSON_NUMBER, "NUM1", a)
         self._addInput(JSON_NUMBER, "NUM2", b)
 
 class Divide(Reporter):
     def __init__(self, a, b):
-        super().__init__(_get(self))
+        super().__init__(_get(self), number=True)
         self._addInput(JSON_NUMBER, "NUM1", a)
         self._addInput(JSON_NUMBER, "NUM2", b)
 
@@ -63,7 +63,7 @@ class Not(Boolean):
 
 class PickRandom(Reporter):
     def __init__(self, start, end):
-        super().__init__(_get(self))
+        super().__init__(_get(self), number=True)
         self._addInput(JSON_NUMBER, "FROM", start)
         self._addInput(JSON_NUMBER, "TO", end)
 
@@ -81,7 +81,7 @@ class LetterOf(Reporter):
 
 class LengthOf(Reporter):
     def __init__(self, string):
-        super().__init__(_get(self))
+        super().__init__(_get(self), number=True)
         self._addInput(JSON_STRING, "STRING", string)
 
 class Contains(Boolean):
@@ -92,17 +92,17 @@ class Contains(Boolean):
 
 class Modulo(Reporter):
     def __init__(self, a, b):
-        super().__init__(_get(self))
+        super().__init__(_get(self), number=True)
         self._addInput(JSON_NUMBER, "NUM1", a)
         self._addInput(JSON_NUMBER, "NUM2", b)
 
 class Round(Reporter):
     def __init__(self, value):
-        super().__init__(_get(self))
+        super().__init__(_get(self), number=True)
         self._addInput(JSON_NUMBER, "NUM", value)
 
 class Operation(Reporter):
     def __init__(self, operation, value):
-        super().__init__(_get(self))
+        super().__init__(_get(self), number=True)
         self._addField("OPERATOR", operation)
         self._addInput(JSON_NUMBER, "NUM", value)

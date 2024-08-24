@@ -3,7 +3,7 @@ from .opcodes import menu_opcodes
 
 class Block:
     def __init__(self, opcode, generateID=True):
-        if generateID: # for custom block parameters
+        if generateID: # For custom block parameters
             self._refreshID()
 
         self.opcode = opcode
@@ -151,8 +151,13 @@ class _NumericalBinops:
     def __ge__(self, value):      return _GreaterThanEquals(self, value)
     def __eq__(self, value):      return _Equals(self, value)
 
-class Reporter(Block, _NumericalBinops): ...
-Boolean = Reporter
+class Reporter(Block, _NumericalBinops):
+    def __init__(self, opcode, generateID=True, number=False):
+        Block.__init__(self, opcode, generateID)
+        self.type = "number" if number else "string"
+
+class Boolean(Block, _NumericalBinops):
+    type = "boolean" # Default (and only) type
 
 # Class for blocks that can hold other ones
 # Crazy!

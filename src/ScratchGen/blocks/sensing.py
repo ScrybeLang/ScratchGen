@@ -20,12 +20,12 @@ class ColorTouchingColor(Boolean):
 
 class DistanceTo(Reporter):
     def __init__(self, target):
-        super().__init__(_get(self))
+        super().__init__(_get(self), number=True)
         self._addMenu("DISTANCETOMENU", target)
 
 class Timer(Reporter):
     def __init__(self):
-        super().__init__(_get(self))
+        super().__init__(_get(self), number=True)
 
 class ResetTimer(Block):
     def __init__(self):
@@ -39,11 +39,11 @@ class GetAttribute(Reporter):
 
 class MouseX(Reporter):
     def __init__(self):
-        super().__init__(_get(self))
+        super().__init__(_get(self), number=True)
 
 class MouseY(Reporter):
     def __init__(self):
-        super().__init__(_get(self))
+        super().__init__(_get(self), number=True)
 
 class SetDragMode(Block):
     def __init__(self, mode):
@@ -61,16 +61,16 @@ class KeyPressed(Boolean):
 
 class Current(Reporter):
     def __init__(self, option):
-        super().__init__(_get(self))
+        super().__init__(_get(self), number=True)
         self._addField("CURRENTMENU", option)
 
 class DaysSince2000(Reporter):
     def __init__(self):
-        super().__init__(_get(self))
+        super().__init__(_get(self), number=True)
 
 class Loudness(Reporter):
     def __init__(self):
-        super().__init__(_get(self))
+        super().__init__(_get(self), number=True)
 
 class Loud(Boolean):
     def __init__(self):

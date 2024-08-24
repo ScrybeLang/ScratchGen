@@ -6,10 +6,10 @@ class Broadcast:
         self.id = generateID("broadcast")
 
         self.name = name
-        self.type = JSON_BROADCAST
+        self.json_type = JSON_BROADCAST
 
     def _asInputValue(self):
-        return [1, [self.type, self.name, str(self.id)]]
+        return [1, [self.json_type, self.name, str(self.id)]]
 
     def _asFieldValue(self):
         return [self.name, str(self.id)]

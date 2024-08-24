@@ -8,10 +8,10 @@ class DataContainer(_NumericalBinops):
 
         self.name = name
         self.value = value
-        self.type = JSON_VARIABLE if "v" in type else JSON_LIST
+        self.json_type = JSON_VARIABLE if "v" in type else JSON_LIST
 
     def _asInputValue(self):
-        return [3, [self.type] + self._asFieldValue()]
+        return [3, [self.json_type] + self._asFieldValue()]
 
     def _asFieldValue(self):
         return [self.name, f"{self.id}-{self.name}"]
@@ -26,7 +26,9 @@ class DataContainer(_NumericalBinops):
 class Variable(DataContainer):
     def __init__(self, name, value):
         super().__init__(name, value, "variable")
+        self.type = "string"
 
 class List(DataContainer):
     def __init__(self, name, entries):
         super().__init__(name, entries, "list")
+        self.type = "list"

@@ -63,13 +63,13 @@ class ItemOfList(Reporter):
 
 class ListIndexOf(Reporter):
     def __init__(self, item, list):
-        super().__init__(_get(self))
+        super().__init__(_get(self), number=True)
         self._addField("LIST", list)
         self._addInput(JSON_STRING, "ITEM", item)
 
 class ListLength(Reporter):
     def __init__(self, list):
-        super().__init__(_get(self))
+        super().__init__(_get(self), number=True)
         self._addField("LIST", list)
 
 class ListContains(Boolean):

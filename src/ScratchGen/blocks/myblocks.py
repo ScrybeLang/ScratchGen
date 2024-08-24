@@ -65,7 +65,7 @@ class CustomBlock(Block):
                 self.arguments = args
 
                 for parameter, argument in zip(parameters, args):
-                    self._addInput(parameter.type, str(parameter.argument_id), argument)
+                    self._addInput(parameter.json_type, str(parameter.argument_id), argument)
 
                 self.mutation = {
                     "proccode": proccode,
@@ -85,12 +85,12 @@ class CustomBlockPrototype(Block):
 
 class CustomBlockReporter(Reporter):
     def __init__(self, type, generateArgumentID=True):
-        super().__init__(_get(type), False)
+        super().__init__(_get(type), generateID=False)
         if generateArgumentID:
             self.argument_id = generateID("argument ID")
 
         self.type_argument = type
-        self.type = JSON_STRING if type == "s" else JSON_SPECIAL
+        self.json_type = JSON_STRING if type == "s" else JSON_SPECIAL
 
         self.name = str(generateID("argument name"))
         self._addField("VALUE", self.name)

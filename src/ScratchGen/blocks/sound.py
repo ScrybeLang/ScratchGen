@@ -44,4 +44,4 @@ class ChangeVolume(Block):
 
 class Volume(Reporter):
     def __init__(self):
-        super().__init__(_get(self))
+        super().__init__(_get(self), number=True)

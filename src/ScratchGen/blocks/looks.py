@@ -94,7 +94,7 @@ class ChangeLayer(Block):
 
 class Size(Reporter):
     def __init__(self):
-        super().__init__(_get(self))
+        super().__init__(_get(self), number=True)
 
 class Costume(Reporter):
     def __init__(self, option):
