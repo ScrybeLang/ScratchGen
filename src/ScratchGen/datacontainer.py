@@ -9,6 +9,7 @@ class DataContainer(_NumericalBinops):
         self.name = name
         self.value = value
         self.json_type = JSON_VARIABLE if "v" in type else JSON_LIST
+        self.contained_blocks = []
 
     def _asInputValue(self):
         return [3, [self.json_type] + self._asFieldValue()]
