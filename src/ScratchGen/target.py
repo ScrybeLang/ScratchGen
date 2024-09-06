@@ -2,6 +2,23 @@ from .asset import Asset
 from .datacontainer import Variable, List
 from .script import Script
 from .blocks import CustomBlock
+import os
+
+# 1 argument - File path (name determined from file name)
+#   Example: parsePath("image.png") -> ("image", ".../.../image.png")
+# 2 arguments - Name and file path
+#   Example: parsePath("name", "sound.mp3") -> ("name", ".../.../sound.mp3")
+# Returns asset name and absolute path
+def parsePath(*args):
+    if len(args) == 1:
+        file_path = args[0]
+        name = os.path.splitext(os.path.basename(file_path))[0]
+    elif len(args) == 2:
+        name, file_path = args
+
+    file_path = os.path.abspath(file_path)
+
+    return name, file_path
 
 class Target:
     def __init__(self):
@@ -13,6 +30,7 @@ class Target:
         self._broadcasts = []
 
         self.current_costume = 0
+        self._asset_names = []
         self._assets = {
             "images": [],
             "sounds": []
@@ -24,7 +42,11 @@ class Target:
         self.layer_order = 0
 
     def _addAsset(self, type, *args):
-        asset = Asset(*args)
+        name, file_path = parsePath(*args)
+        asset_name = os.path.basename(file_path)
+        if asset_name in self._asset_names: return
+        self._asset_names.append(asset_name)
+        asset = Asset(name, file_path)
         self._assets[type].append(asset)
 
         return asset
