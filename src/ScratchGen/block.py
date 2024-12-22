@@ -139,17 +139,28 @@ def _Equals(*args):
     from .blocks import Equals
     return Equals(*args)
 
+def _NotEquals(*args):
+    from .blocks import Not, Equals
+    return Not(Equals(*args))
+
 class _NumericalBinops:
-    def __add__(self, value):     return _Add(self, value)
-    def __sub__(self, value):     return _Subtract(self, value)
-    def __mul__(self, value):     return _Multiply(self, value)
-    def __truediv__(self, value): return _Divide(self, value)
-    def __mod__(self, value):     return _Modulo(self, value)
-    def __lt__(self, value):      return _LessThan(self, value)
-    def __gt__(self, value):      return _GreaterThan(self, value)
-    def __le__(self, value):      return _LessThanEquals(self, value)
-    def __ge__(self, value):      return _GreaterThanEquals(self, value)
-    def __eq__(self, value):      return _Equals(self, value)
+    def __add__(self, value):      return _Add(self, value)
+    def __sub__(self, value):      return _Subtract(self, value)
+    def __mul__(self, value):      return _Multiply(self, value)
+    def __truediv__(self, value):  return _Divide(self, value)
+    def __mod__(self, value):      return _Modulo(self, value)
+    def __lt__(self, value):       return _LessThan(self, value)
+    def __gt__(self, value):       return _GreaterThan(self, value)
+    def __le__(self, value):       return _LessThanEquals(self, value)
+    def __ge__(self, value):       return _GreaterThanEquals(self, value)
+    def __eq__(self, value):       return _Equals(self, value)
+    def __ne__(self, value):       return _NotEquals(self, value)
+
+    def __radd__(self, value):     return _Add(value, self)
+    def __rsub__(self, value):     return _Subtract(value, self)
+    def __rmul__(self, value):     return _Multiply(value, self)
+    def __rtruediv__(self, value): return _Divide(value, self)
+    def __rmod__(self, value):     return _Modulo(value, self)
 
 class Reporter(Block, _NumericalBinops):
     def __init__(self, opcode, generateID=True, number=False):
