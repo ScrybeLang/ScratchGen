@@ -3,7 +3,7 @@ from .opcodes import menu_opcodes
 
 class Block:
     def __init__(self, opcode, generateID=True):
-        if generateID: # For custom block parameters
+        if generateID: # for custom block parameters
             self._refreshID()
 
         self.opcode = opcode
@@ -162,13 +162,8 @@ class _NumericalBinops:
     def __rtruediv__(self, value): return _Divide(value, self)
     def __rmod__(self, value):     return _Modulo(value, self)
 
-class Reporter(Block, _NumericalBinops):
-    def __init__(self, opcode, generateID=True, number=False):
-        Block.__init__(self, opcode, generateID)
-        self.type = "number" if number else "string"
-
-class Boolean(Block, _NumericalBinops):
-    type = "boolean" # Default (and only) type
+class Reporter(Block, _NumericalBinops): ...
+Boolean = Reporter
 
 # Class for blocks that can hold other ones
 # Crazy!

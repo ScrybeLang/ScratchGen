@@ -82,12 +82,12 @@ class SetY(Block):
 
 class XPosition(Reporter):
     def __init__(self):
-        super().__init__(_get(self), number=True)
+        super().__init__(_get(self))
 
 class YPosition(Reporter):
     def __init__(self):
-        super().__init__(_get(self), number=True)
+        super().__init__(_get(self))
 
 class Direction(Reporter):
     def __init__(self):
-        super().__init__(_get(self), number=True)
+        super().__init__(_get(self))
