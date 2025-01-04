@@ -155,6 +155,7 @@ class _NumericalBinops:
     def __ge__(self, value):       return _GreaterThanEquals(self, value)
     def __eq__(self, value):       return _Equals(self, value)
     def __ne__(self, value):       return _NotEquals(self, value)
+    def __neg__(self):             return _Multiply(self, -1)
 
     def __radd__(self, value):     return _Add(value, self)
     def __rsub__(self, value):     return _Subtract(value, self)
